@@ -10,6 +10,7 @@ import br.com.diagnosticit.resources.services.CategoriaService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,14 +26,12 @@ public class CategoriaResource {
     @Autowired
     private CategoriaService service;
     
-    @RequestMapping(method=RequestMethod.GET)
-    public List<Categoria> listar(){
-        
-        Categoria c1 = service.buscar( 1L );
-        List<Categoria> categorias = new ArrayList<>();
-        categorias.add(c1);
-
-        return categorias;
+    @RequestMapping( method=RequestMethod.GET, value = "/{id}" )
+    public Categoria buscar( @PathVariable long id ){        
+        Categoria c1 = service.buscar( id );        
+        return c1;
         
     }
+    
+    
 }
