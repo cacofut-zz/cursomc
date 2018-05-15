@@ -28,7 +28,7 @@ public class CategoriaResource {
     private CategoriaService service;
     
     @RequestMapping( value = "/{id}", method=RequestMethod.GET )
-    public ResponseEntity<?> buscar( @PathVariable long id ){        
+    public ResponseEntity<?> buscar( @PathVariable long id ) throws Throwable{        
         Categoria c1 = service.buscar( id );        
         return ResponseEntity.ok().body( c1 );
         
