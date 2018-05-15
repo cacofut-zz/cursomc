@@ -12,6 +12,7 @@ import java.util.Objects;
  *
  * @author cristiano
  */
+
 public class Categoria implements Serializable {
 
     private static final long serialVersionUID = -2096349568907867984L;
