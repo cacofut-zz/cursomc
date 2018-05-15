@@ -6,8 +6,10 @@
 package br.com.diagnosticit.resources;
 
 import br.com.diagnosticit.resources.domain.Categoria;
+import br.com.diagnosticit.resources.services.CategoriaService;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,14 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value="/categorias")
 public class CategoriaResource {
     
+    @Autowired
+    private CategoriaService service;
+    
     @RequestMapping(method=RequestMethod.GET)
     public List<Categoria> listar(){
         
-        Categoria c1 = new Categoria(1L, "informática");
-        Categoria c2 = new Categoria(2L, "escritório");
+        Categoria c1 = service.buscar( 1L );
         List<Categoria> categorias = new ArrayList<>();
         categorias.add(c1);
-        categorias.add(c2);
+
         return categorias;
         
     }
