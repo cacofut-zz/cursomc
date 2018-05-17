@@ -5,46 +5,52 @@
  */
 package br.com.diagnosticit.resources.domain;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author cristianoca
  */
-
 @Entity
-public class Estado implements Serializable{
-
-    private static final long serialVersionUID = 1L;
-            
+public class Cidade {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
     private String nome;
     
-    @OneToMany(mappedBy = "estado")
-    private List<Cidade> cidades = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn( name = "estado_id" )
+    private Estado estado;
 
-    public Estado() {
-    }
-
-    public Estado( String nome){
-        this.nome = nome;
-    }
+    public Cidade() {
+    }   
     
-    public Estado(Long id, String nome) {
+    public Cidade(Long id, String nome) {
         this.id = id;
         this.nome = nome;
+    }
+
+    public Cidade(String nome, Estado estado) {
+        this.nome = nome;
+        this.estado = estado;
+    }
+
+        
+    public Cidade(Long id, String nome, Estado estado) {
+        this.id = id;
+        this.nome = nome;
+        this.estado = estado;
+    }        
+
+    public Cidade(String são_Paulo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Long getId() {
@@ -63,18 +69,18 @@ public class Estado implements Serializable{
         this.nome = nome;
     }
 
-    public List<Cidade> getCidades() {
-        return cidades;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setCidades(List<Cidade> cidades) {
-        this.cidades = cidades;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
         
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -89,7 +95,7 @@ public class Estado implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Estado other = (Estado) obj;
+        final Cidade other = (Cidade) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
