@@ -6,6 +6,7 @@
 package br.com.diagnosticit.resources.domain;
 
 import br.com.diagnosticit.resources.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -37,6 +38,7 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
     private Integer tipo;
     
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
     

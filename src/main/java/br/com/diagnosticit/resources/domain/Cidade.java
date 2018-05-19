@@ -5,6 +5,7 @@
  */
 package br.com.diagnosticit.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class Cidade {
     private Long id;
     private String nome;
     
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn( name = "estado_id" )
     private Estado estado;
