@@ -2,10 +2,15 @@ package br.com.diagnosticit;
 
 import br.com.diagnosticit.resources.domain.Categoria;
 import br.com.diagnosticit.resources.domain.Cidade;
+import br.com.diagnosticit.resources.domain.Cliente;
+import br.com.diagnosticit.resources.domain.Endereco;
 import br.com.diagnosticit.resources.domain.Estado;
 import br.com.diagnosticit.resources.domain.Produto;
+import br.com.diagnosticit.resources.domain.enums.TipoCliente;
 import br.com.diagnosticit.resources.repositories.CategoriaRepository;
 import br.com.diagnosticit.resources.repositories.CidadeRepository;
+import br.com.diagnosticit.resources.repositories.ClienteRepository;
+import br.com.diagnosticit.resources.repositories.EnderecoRepository;
 import br.com.diagnosticit.resources.repositories.EstadoRepository;
 import br.com.diagnosticit.resources.repositories.ProdutoRepository;
 import java.util.Arrays;
@@ -28,6 +33,12 @@ public class CursomcApplication implements CommandLineRunner{
     
     @Autowired
     private CidadeRepository cidadeRepository;
+    
+    @Autowired
+    private ClienteRepository clienteRepository;
+    
+    @Autowired
+    private EnderecoRepository enderecoRepository;
     
     public static void main(String[] args) {
         SpringApplication.run(CursomcApplication.class, args);
@@ -66,6 +77,19 @@ public class CursomcApplication implements CommandLineRunner{
         
         estadoRepository.saveAll( Arrays.asList( estadoSaopaulo, estadoRiodejaneiro ));
         cidadeRepository.saveAll( Arrays.asList( cidadeSaopaulo, cidadeBraganca, cidadeFluminense ));
+        
+        
+        Cliente cli1 = new Cliente( null, "cristiano carvalho amaral", "cacofut@hotmail.com", "37346188861", TipoCliente.PESSOA_FISICA );
+        cli1.getTelefones().addAll( Arrays.asList( "991874268", "37395268" ));
+        
+        Endereco end1 = new Endereco(null, "Rua Ernest Renam", "954", "bloco 1 - apt 221", "Paraisópolis", "056590020", cli1, cidadeSaopaulo );
+        Endereco end2 = new Endereco(null, "Rua Joaquim floriano", "854", "bloco azul", "Vila Guilherme", "000000000", cli1, cidadeBraganca );
+        
+        
+        clienteRepository.saveAll( Arrays.asList( cli1 ));
+        enderecoRepository.saveAll( Arrays.asList( end1, end2 ));
+        
+        
         
     }
 }
