@@ -6,6 +6,7 @@
 package br.com.diagnosticit.resources.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,9 @@ import javax.persistence.ManyToOne;
  * @author cristianoca
  */
 @Entity
-public class Cidade {
+public class Cidade implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
