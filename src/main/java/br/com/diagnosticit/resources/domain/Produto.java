@@ -6,6 +6,7 @@
 package br.com.diagnosticit.resources.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
     
-    @JsonBackReference
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "PRODUTO_CATEGORIA",
