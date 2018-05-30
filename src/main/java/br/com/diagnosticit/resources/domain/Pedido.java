@@ -5,6 +5,7 @@
  */
 package br.com.diagnosticit.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -33,6 +34,7 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue( strategy=GenerationType.IDENTITY )
     private Long id;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date instante;
     
  

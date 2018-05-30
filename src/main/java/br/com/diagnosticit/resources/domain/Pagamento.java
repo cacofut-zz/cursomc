@@ -6,6 +6,7 @@
 package br.com.diagnosticit.resources.domain;
 
 import br.com.diagnosticit.resources.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -30,6 +31,7 @@ public abstract class Pagamento implements Serializable {
     private Long id;
     private Integer estado;
     
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId

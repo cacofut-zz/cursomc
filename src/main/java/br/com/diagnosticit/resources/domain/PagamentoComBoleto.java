@@ -6,6 +6,7 @@
 package br.com.diagnosticit.resources.domain;
 
 import br.com.diagnosticit.resources.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 
@@ -18,7 +19,9 @@ public class PagamentoComBoleto extends Pagamento{
     
     private static final long serialVersionUID = 1L;
     
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date dataVencimento;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date dataPagamento;
 
     public PagamentoComBoleto() {
