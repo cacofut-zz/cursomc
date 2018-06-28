@@ -1,0 +1,27 @@
+[33m4f43204[m Insert Categorias conflitos
+[33ma30548d[m Insert Categoria nova
+[33mdc87461[m Insert Categoria
+[33m5f33c5b[m Insert Categoria
+[33mb092fb2[m Insert Categorias
+[33m9b97950[m Categoria resource e Service
+[33m9dabc8d[m EndPoint /Pedidos/{id}
+[33ma1a1eb8[m ItemPedido e ItemPedidoPK
+[33m64f55db[m pedido estado e pagamento
+[33m9547aea[m pedido e pagamento
+[33m5e56406[m end point clientes
+[33m1dda087[m incluindo valores para cliente e endereço
+[33mf2e6ee2[m criando tipo ENUM
+[33m20894bd[m últimas alterações
+[33m5727aa8[m entidade estado
+[33mbaffd76[m ajuste no endpoint categorias
+[33mb6dea1d[m Criado o repository Produto
+[33ma6dcf2a[m adicionado @PathVariable
+[33m35e77a3[m adicionado @PathVariable
+[33m7fa1df4[m Retornando dados da base h2
+[33m414b9b0[m ajustando as dependencias do projeto
+[33m98ca82d[m ajustando nome do projeto
+[33m29b8e91[m criando Categoria no banco
+[33m0bdce20[m testando classe de dominio
+[33m82f872b[m teste
+[33m6cb819b[m iniciais
+[33mb8d1eae[m Projeto criado
