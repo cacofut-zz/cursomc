@@ -8,6 +8,11 @@ package br.com.diagnosticit.resources;
 import br.com.diagnosticit.resources.domain.Categoria;
 import br.com.diagnosticit.resources.services.CategoriaService;
 import java.net.URI;
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> b092fb294128e66c6995450a8288aa1fbba3aea7
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,8 +39,7 @@ public class CategoriaResource {
         return ResponseEntity.ok().body( c1 );
         
     }
-     
-    
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody Categoria categoria){
         categoria = service.insert( categoria );
