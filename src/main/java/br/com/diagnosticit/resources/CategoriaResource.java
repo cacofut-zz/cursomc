@@ -36,6 +36,7 @@ public class CategoriaResource {
         return ResponseEntity.ok().body( c1 );
         
     }
+     
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody Categoria categoria){
