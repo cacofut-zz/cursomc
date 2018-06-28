@@ -22,7 +22,7 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository repositoty;
     
-    public Categoria buscar( Long id ) throws Throwable{
+    public Categoria find( Long id ) throws Throwable{
         Optional<Categoria> optional = repositoty.findById( id );
         return optional.orElseThrow( () -> {
             throw new ObjectNotFoundException( "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName() );
@@ -32,6 +32,11 @@ public class CategoriaService {
     public Categoria insert(Categoria categoria) {
         categoria.setId( null );
         return repositoty.save( categoria );
+    }
+
+    public void update(Categoria categoria) throws Throwable {
+        find(categoria.getId());
+        repositoty.save(categoria);
     }
     
 }

@@ -30,7 +30,7 @@ public class CategoriaResource {
     
     @RequestMapping( value = "/{id}", method=RequestMethod.GET )
     public ResponseEntity<?> buscar( @PathVariable long id ) throws Throwable{        
-        Categoria c1 = service.buscar( id );        
+        Categoria c1 = service.find( id );        
         return ResponseEntity.ok().body( c1 );
         
     }
@@ -43,4 +43,10 @@ public class CategoriaResource {
         return ResponseEntity.created(uri).build();
     }
     
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update( @RequestBody Categoria categoria, @PathVariable long id ) throws Throwable{
+        categoria.setId(id);
+        service.update(categoria);
+        return ResponseEntity.noContent().build();
+    }
 }
