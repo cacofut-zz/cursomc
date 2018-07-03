@@ -7,6 +7,9 @@ package br.com.diagnosticit.dto;
 
 import br.com.diagnosticit.resources.domain.Categoria;
 import java.io.Serializable;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 
 /**
  *
@@ -16,6 +19,8 @@ public class CategoriaDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Long id;
+    @NotEmpty(message = "O campo não pode estar vazio")
+    @Size(min = 5, max = 80, message = "O tamanho deve estar entre 5 e 80")
     private String nome;
 
     public CategoriaDTO() {
