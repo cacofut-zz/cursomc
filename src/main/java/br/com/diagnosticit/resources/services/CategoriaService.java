@@ -7,9 +7,11 @@ package br.com.diagnosticit.resources.services;
 
 import br.com.diagnosticit.resources.domain.Categoria;
 import br.com.diagnosticit.resources.repositories.CategoriaRepository;
+import br.com.diagnosticit.resources.services.exceptions.IntegrityViolationException;
 import br.com.diagnosticit.resources.services.exceptions.ObjectNotFoundException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -37,6 +39,16 @@ public class CategoriaService {
     public void update(Categoria categoria) throws Throwable {
         find(categoria.getId());
         repositoty.save(categoria);
+    }
+
+    public void delete( Long id ) throws Throwable {
+        find(id);
+        try{
+            repositoty.deleteById(id);
+        }
+        catch (DataIntegrityViolationException ex) {
+            throw new IntegrityViolationException("Não pode remover uma categoria que contenha produtos!");
+        }
     }
     
 }
