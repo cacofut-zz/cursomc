@@ -5,9 +5,12 @@
  */
 package br.com.diagnosticit.resources;
 
+import br.com.diagnosticit.dto.CategoriaDTO;
 import br.com.diagnosticit.resources.domain.Categoria;
 import br.com.diagnosticit.resources.services.CategoriaService;
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,5 +57,12 @@ public class CategoriaResource {
     public ResponseEntity<Void> delete( @PathVariable long id ) throws Throwable{
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<CategoriaDTO>> findAll(){        
+        List<CategoriaDTO> list = service.findAll().stream()
+                .map( cat -> new CategoriaDTO(cat)).collect( Collectors.toList());
+        return ResponseEntity.ok().body(list);
     }
 }

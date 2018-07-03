@@ -5,10 +5,12 @@
  */
 package br.com.diagnosticit.resources.services;
 
+import br.com.diagnosticit.dto.CategoriaDTO;
 import br.com.diagnosticit.resources.domain.Categoria;
 import br.com.diagnosticit.resources.repositories.CategoriaRepository;
 import br.com.diagnosticit.resources.services.exceptions.IntegrityViolationException;
 import br.com.diagnosticit.resources.services.exceptions.ObjectNotFoundException;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -49,6 +51,10 @@ public class CategoriaService {
         catch (DataIntegrityViolationException ex) {
             throw new IntegrityViolationException("Não pode remover uma categoria que contenha produtos!");
         }
+    }
+
+    public List<Categoria> findAll() {
+        return repositoty.findAll();
     }
     
 }
