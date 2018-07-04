@@ -6,8 +6,10 @@
 package br.com.diagnosticit.resources;
 
 import br.com.diagnosticit.dto.ClienteDTO;
+import br.com.diagnosticit.dto.ClienteNewDTO;
 import br.com.diagnosticit.resources.domain.Cliente;
 import br.com.diagnosticit.resources.services.ClienteService;
+import java.net.URI;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  *
@@ -34,6 +37,13 @@ public class ClienteResource {
         return ResponseEntity.ok().body( cliente );
     }
     
+    /**
+     * 
+     * @param objDTO
+     * @param id
+     * @return
+     * @throws Throwable 
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update( @Valid @RequestBody ClienteDTO objDTO, 
             @PathVariable long id ) throws Throwable{
@@ -43,6 +53,26 @@ public class ClienteResource {
         return ResponseEntity.noContent().build();
     }
     
+    /**
+     * 
+     * @param objDTO
+     * @return 
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> insert( @RequestBody ClienteNewDTO objDTO ){
+        Cliente obj = clienteService.fromClienteDTO(objDTO);
+        obj = clienteService.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws Throwable 
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete( @PathVariable long id ) throws Throwable{
         clienteService.delete( id );

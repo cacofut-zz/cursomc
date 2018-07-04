@@ -34,6 +34,12 @@ public class CategoriaResource {
     @Autowired
     private CategoriaService service;
     
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws Throwable 
+     */
     @RequestMapping( value = "/{id}", method=RequestMethod.GET )
     public ResponseEntity<?> buscar( @PathVariable long id ) throws Throwable{        
         Categoria c1 = service.find( id );        
@@ -41,6 +47,11 @@ public class CategoriaResource {
         
     }
 
+    /**
+     * 
+     * @param categoriaDTO
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert( @Valid @RequestBody CategoriaDTO categoriaDTO){
         Categoria categoria = service.fromCategoriaDTO(categoriaDTO);
@@ -50,6 +61,13 @@ public class CategoriaResource {
         return ResponseEntity.created(uri).build();
     }
     
+    /**
+     * 
+     * @param categoriaDTO
+     * @param id
+     * @return
+     * @throws Throwable 
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update( @Valid @RequestBody CategoriaDTO categoriaDTO, @PathVariable long id ) throws Throwable{
         Categoria categoria = service.fromCategoriaDTO(categoriaDTO);
@@ -58,12 +76,22 @@ public class CategoriaResource {
         return ResponseEntity.noContent().build();
     }
     
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws Throwable 
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete( @PathVariable long id ) throws Throwable{
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<CategoriaDTO>> findAll(){        
         List<CategoriaDTO> list = service.findAll().stream()

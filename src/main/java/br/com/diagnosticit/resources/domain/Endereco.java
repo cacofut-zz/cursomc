@@ -56,6 +56,16 @@ public class Endereco implements Serializable {
         this.cliente = cliente;
         this.cidade  = cidade;
     }
+    
+     public Endereco(String logradouro, String numero, String complemento, String bairro, String cep, Cliente cliente, Cidade cidade) {   
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.cliente = cliente;
+        this.cidade  = cidade;
+    }
 
     public Long getId() {
         return id;
