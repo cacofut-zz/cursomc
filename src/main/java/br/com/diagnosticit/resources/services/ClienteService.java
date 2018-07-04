@@ -115,7 +115,7 @@ public class ClienteService {
             clienteRepository.deleteById(id);
         }
         catch( DataIntegrityViolationException ex ){
-            throw new IntegrityViolationException("Não pode remover o cliente por que há relacionamentos");
+            throw new IntegrityViolationException("Não pode remover o cliente por que há pedidos relacionados");
         }
     }
 
