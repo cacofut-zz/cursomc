@@ -28,7 +28,6 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Cliente implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -54,11 +53,11 @@ public class Cliente implements Serializable {
     }
 
     public Cliente(Long id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
+        this.id        = id;
+        this.nome      = nome;
+        this.email     = email;
         this.cpfOuCnpj = cpfOuCnpj;
-        this.tipo      = tipo.getCodigo();
+        this.tipo      = ( tipo == null ) ? null : tipo.getCodigo();
     }
 
     public Long getId() {
