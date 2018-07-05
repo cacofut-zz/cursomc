@@ -5,6 +5,7 @@
  */
 package br.com.diagnosticit.dto;
 
+import br.com.diagnosticit.resources.services.validation.ClienteUpdate;
 import java.io.Serializable;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -14,6 +15,7 @@ import javax.validation.constraints.Size;
  *
  * @author cristianoca
  */
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     
