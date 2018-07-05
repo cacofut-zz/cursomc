@@ -16,10 +16,10 @@ import javax.validation.Payload;
  *
  * @author cristianoca
  */
-@Constraint(validatedBy = CpfOrCnpjValidator.class)
+@Constraint(validatedBy = ClienteInsertValidator.class)
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CpfOrCnpj {
+public @interface ClienteInsert {
     
     String message() default "Erro de validação";
     

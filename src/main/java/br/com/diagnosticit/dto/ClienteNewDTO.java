@@ -5,16 +5,17 @@
  */
 package br.com.diagnosticit.dto;
 
-import br.com.diagnosticit.resources.services.validation.CpfOrCnpj;
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import br.com.diagnosticit.resources.services.validation.ClienteInsert;
 
 /**
  *
  * @author cristianoca
  */
-@CpfOrCnpj
+@ClienteInsert
 public class ClienteNewDTO {
 
     @NotEmpty(message = "Preenchimento obrigatório")
