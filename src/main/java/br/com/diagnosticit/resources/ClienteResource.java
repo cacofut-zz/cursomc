@@ -31,6 +31,12 @@ public class ClienteResource {
     @Autowired
     private ClienteService clienteService;
     
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws Throwable 
+     */
     @RequestMapping(value = "{id}", method=RequestMethod.GET)
     public ResponseEntity<?> find( @PathVariable Long id ) throws Throwable{
         Cliente cliente = clienteService.find( id );
@@ -59,7 +65,7 @@ public class ClienteResource {
      * @return 
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert( @RequestBody ClienteNewDTO objDTO ){
+    public ResponseEntity<Void> insert( @Valid @RequestBody ClienteNewDTO objDTO ){
         Cliente obj = clienteService.fromClienteDTO(objDTO);
         obj = clienteService.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
